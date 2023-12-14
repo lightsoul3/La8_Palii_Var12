@@ -1,0 +1,71 @@
+<h1>All students</h1>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click) = "addClick()"
+data-backdrop="static" data-keyboard="false">
+    Add 
+</button> 
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalTitle}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click) = "closeClick()" 
+          ></button>
+        </div>
+        <div class="modal-body">
+            <app-add-student [student]="student" *ngIf="activateAddStudentComponent"></app-add-student>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                FullName
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                DateOfBirth
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of studentList">
+            <td>{{student.ID}}</td>
+            <td>{{student.Fullname}}</td>
+            <td>{{student.Address}}</td>
+            <td>{{student.Phone}}</td>
+            <td>{{student.DateOfBirth}}</td>
+            <td>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click) = "editClick(student)"
+                data-backdrop="static" data-keyboard="false">
+                    Edit 
+                </button> 
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" (click) = "deleteClick(student)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>

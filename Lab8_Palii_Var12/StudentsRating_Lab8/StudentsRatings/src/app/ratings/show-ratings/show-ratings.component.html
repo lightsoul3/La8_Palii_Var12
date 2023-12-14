@@ -1,0 +1,66 @@
+<h1>All ratings</h1>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click) = "addClick()"
+data-backdrop="static" data-keyboard="false">
+    Add
+</button> 
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalTitle}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click) = "closeClick()" 
+          ></button>
+        </div>
+        <div class="modal-body">
+            <app-add-rating *ngIf="activateAddRatingComponent"></app-add-rating>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Student 
+            </th>
+            <th>
+                Subject
+            </th>
+            <th>
+                Month 
+            </th>
+            <th>
+                CurrentRating
+            </th>
+            <th>
+                Teacher
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rating of ratingList">
+            <td>{{rating.ID}}</td>
+            <td>{{rating.Student.Fullname}}</td>
+            <td>{{rating.Subject.Name}}</td>
+            <td>{{rating.Month}}</td>
+            <td>{{rating.CurrentRating}}</td>
+            <td>{{rating.Teacher.Name}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" (click) = "deleteClick(rating)">
+                Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table> 

@@ -1,0 +1,61 @@
+<h1>All teachers</h1>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click) = "addClick()"
+data-backdrop="static" data-keyboard="false">
+    Add
+</button> 
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{modalTitle}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click) = "closeClick()" 
+          ></button>
+        </div>
+        <div class="modal-body">
+            <app-add-teacher [teacher]="teacher" *ngIf="activateAddTeacherComponent"></app-add-teacher>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let teacher of teacherList">
+            <td>{{teacher.ID}}</td>
+            <td>{{teacher.Name}}</td>
+            <td>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click) = "editClick(teacher)"
+                data-backdrop="static" data-keyboard="false"
+                >
+                    Edit
+                </button> 
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" (click) = "deleteClick(teacher)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+

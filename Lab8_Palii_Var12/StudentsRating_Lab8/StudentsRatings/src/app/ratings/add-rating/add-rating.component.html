@@ -1,0 +1,42 @@
+<div class="form-froup row">
+
+    <label class="col-sm-2 col-form-label">Student</label>
+    <div class="col-sm-10">
+        <select class="form-control" [(ngModel)]="StudentID" required>
+            <option selected>Choose</option>
+            <option *ngFor="let student of StudentList" value="{{student.ID}}">{{student.Fullname}}</option>
+        </select>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Subject</label>
+    <div class="col-sm-10">
+        <select class="form-control" [(ngModel)]="SubjectID" required>
+            <option selected>Choose</option>
+            <option *ngFor="let subject of SubjectList" value="{{subject.ID}}">{{subject.Name}}</option>
+        </select>
+    </div>
+
+    <label class="col-sm-2 col-form-label">CurrentRating</label>
+    <div class="col-sm-10">
+        <input type="number" class="form-control" [(ngModel)]="CurrentRating">
+    </div>
+    <label class="col-sm-2 col-form-label">Month</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Month"
+        placeholder="Enter month" #name="ngModel"  required>
+        <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+            Enter Month
+        </div>
+    </div>
+    <label class="col-sm-2 col-form-label">Teacher</label>
+    <div class="col-sm-10">
+        <select class="form-control" [(ngModel)]="TeacherID" required>
+            <option selected>Choose</option>
+            <option *ngFor="let teacher of TeacherList" value="{{teacher.ID}}">{{teacher.Name}}</option>
+        </select>
+    </div>
+</div>
+
+<button type="button" (click)="addRating()" class="btn btn-primary">
+    Add 
+</button>
